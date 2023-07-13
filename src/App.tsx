@@ -5,7 +5,7 @@ import { ThemeProvider } from './contexts/ThemeContext'
 
 function App() {
 	return (
-		<div className=''>
+		<div className='flex flex-col mx-6'>
 			<ThemeProvider>
 				<Header />
 				<SearchUser />

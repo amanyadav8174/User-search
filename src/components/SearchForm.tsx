@@ -31,11 +31,13 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 	}, [inputRef])
 
 	return (
-		<form className='' onSubmit={handleSubmit}>
-			<img className='' src={search} alt='icon-search' />
+		<form
+			className='flex items-center gap-2 w-full mb-4 h-15 rounded-[15px] bg-foreground shadow-custom dark:shadow-none dark:bg-dark-foreground'
+			onSubmit={handleSubmit}>
+			<img className='block w-5 h-5 ml-2' src={search} alt='icon-search' />
 			<input
 				ref={inputRef}
-				className=''
+				className='w-full pt-5 pb-4 pl-1 text-xs text-primary leading-25 border-0 outline-none  placeholder-primary dark:bg-dark-foreground dark:text-dark-primary dark:placeholder-dark-primary hover:cursor-pointer'
 				type='text'
 				placeholder={isWideEnough ? 'Type / to search GitHub user...' : 'Search GitHub username...'}
 				aria-label='Search GitHub username…'
@@ -43,7 +45,12 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 				onChange={e => setUserName(e.target.value)}
 				required
 			/>
-			<button className='' type='submit'>
+			<button
+				className='mr-2 text-sml font-bold pl-2 pr-2 pt-3 pb-3 bg-blue rounded-[10px] text-foreground
+				transition duration-300
+				hover:cursor-pointer
+				hover:bg-lightBlue'
+				type='submit'>
 				Search
 			</button>
 		</form>
