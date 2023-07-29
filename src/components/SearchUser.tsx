@@ -2,12 +2,15 @@ import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import SearchForm from './SearchForm'
 import UserDetails from './UserDetails'
+import UserLoading from './UserLoading'
 
 const SearchUser: React.FC = () => {
 	const [userData, setUserData] = useState<any>(null)
 	const [error, setError] = useState<string>('')
+	const [loading, setLoading] = useState(false)
 
 	const handleSearch = async (username: string) => {
+		setLoading(true)
 		try {
 			const response = await axios.get(`https://api.github.com/users/${username}`)
 			setUserData(response.data)
@@ -20,6 +23,9 @@ const SearchUser: React.FC = () => {
 			}
 			setUserData(null)
 		}
+		setTimeout(() => {
+			setLoading(false)
+		}, 1500)
 	}
 
 	useEffect(() => {
@@ -30,10 +36,14 @@ const SearchUser: React.FC = () => {
 	return (
 		<div>
 			<SearchForm onSearch={handleSearch} />
-			<UserDetails
-				userData={userData !== null && error === '' ? userData : null}
-				error={userData === null && error !== '' ? error : ''}
-			/>
+			{loading ? (
+				<UserLoading />
+			) : (
+				<UserDetails
+					userData={userData !== null && error === '' ? userData : null}
+					error={userData === null && error !== '' ? error : ''}
+				/>
+			)}
 		</div>
 	)
 }
