@@ -4,8 +4,23 @@ import SearchForm from './SearchForm'
 import UserDetails from './UserDetails'
 import UserLoading from './UserLoading'
 
+interface User {
+	avatar_url: string
+	login: string
+	name: string
+	bio: string | null
+	created_at: string
+	public_repos: number
+	followers: number
+	following: number
+	location?: string
+	blog?: string
+	twitter_username?: string
+	company?: string
+}
+
 const SearchUser: React.FC = () => {
-	const [userData, setUserData] = useState<any>(null)
+	const [userData, setUserData] = useState<User | null>(null)
 	const [error, setError] = useState<string>('')
 	const [loading, setLoading] = useState(false)
 
@@ -15,17 +30,20 @@ const SearchUser: React.FC = () => {
 			const response = await axios.get(`https://api.github.com/users/${username}`)
 			setUserData(response.data)
 			setError('')
-		} catch (error: any) {
-			if (error.response && error.response.status === 404) {
-				setError('User not found. Try again ...')
-			} else {
-				setError('Oops! Something went wrong. Please try again later.')
+		} catch (error) {
+			if (axios.isAxiosError(error)) {
+				if (error.response?.status === 404) {
+					setError('User not found. Try again ...')
+				} else {
+					setError('Oops! Something went wrong. Please try again later.')
+				}
+				setUserData(null)
 			}
-			setUserData(null)
+		} finally {
+			setTimeout(() => {
+				setLoading(false)
+			}, 1500)
 		}
-		setTimeout(() => {
-			setLoading(false)
-		}, 1500)
 	}
 
 	useEffect(() => {
@@ -36,14 +54,7 @@ const SearchUser: React.FC = () => {
 	return (
 		<div>
 			<SearchForm onSearch={handleSearch} />
-			{loading ? (
-				<UserLoading />
-			) : (
-				<UserDetails
-					userData={userData !== null && error === '' ? userData : null}
-					error={userData === null && error !== '' ? error : ''}
-				/>
-			)}
+			{loading ? <UserLoading /> : <UserDetails userData={userData} error={error} />}
 		</div>
 	)
 }

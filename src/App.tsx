@@ -1,6 +1,5 @@
-import React, { useContext, useEffect } from 'react'
-import SearchUser from './components/SearchUser'
 import Header from './components/Header'
+import SearchUser from './components/SearchUser'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 function App() {

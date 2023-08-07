@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react'
 import search from '../assets/icon-search.svg'
 import { useMedia } from 'react-use-media'
+
 interface SearchFormProps {
 	onSearch: (userName: string) => void
 }
 
 const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 	const [userName, setUserName] = useState('')
-	const inputRef = useRef<HTMLInputElement>(null)
+	const inputRef = useRef<HTMLInputElement | null>(null)
 
 	const isWideEnough = useMedia({ minWidth: 400 })
 
@@ -17,18 +18,22 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 		inputRef.current?.blur()
 	}
 
-	const detectKeySearch = (e: KeyboardEvent) => {
-		if (e.key === '/') {
-			inputRef.current?.focus()
-			e.preventDefault()
-		}
-	}
 	useEffect(() => {
+		const detectKeySearch = (e: KeyboardEvent) => {
+			if (e.key === '/') {
+				inputRef.current?.focus()
+				e.preventDefault()
+			}
+		}
+
 		document.addEventListener('keydown', detectKeySearch)
+
 		return () => {
 			document.removeEventListener('keydown', detectKeySearch)
 		}
-	}, [inputRef])
+	}, [])
+
+	const searchInputPlaceholder = isWideEnough ? 'Type / to search GitHub user...' : 'Search GitHub username...'
 
 	return (
 		<form
@@ -39,7 +44,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 				ref={inputRef}
 				className='w-full pt-5 md:pt-6 pb-4 md:pb-6 pl-1 text-xs md:text-base text-primary leading-25 border-0 outline-none  placeholder-primary dark:bg-dark-foreground dark:text-dark-primary dark:placeholder-dark-primary hover:cursor-pointer'
 				type='text'
-				placeholder={isWideEnough ? 'Type / to search GitHub user...' : 'Search GitHub username...'}
+				placeholder={searchInputPlaceholder}
 				aria-label='Search GitHub username…'
 				value={userName}
 				onChange={e => setUserName(e.target.value)}
