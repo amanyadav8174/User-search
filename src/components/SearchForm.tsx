@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
 import search from '../assets/icon-search.svg'
-import { useMedia } from 'react-use-media'
 
 interface SearchFormProps {
 	onSearch: (userName: string) => void
@@ -9,8 +8,7 @@ interface SearchFormProps {
 const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 	const [userName, setUserName] = useState('')
 	const inputRef = useRef<HTMLInputElement | null>(null)
-
-	const isWideEnough = useMedia({ minWidth: 400 })
+	const [isWideEnough, setIsWideEnough] = useState(window.matchMedia('(min-width: 400px)').matches)
 
 	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault()
@@ -33,6 +31,20 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 		}
 	}, [])
 
+	useEffect(() => {
+		const handleResize = (e: MediaQueryListEvent) => {
+			setIsWideEnough(e.matches)
+		}
+
+		const mediaQueryList = window.matchMedia('(min-width: 400px)')
+		mediaQueryList.addEventListener('change', handleResize)
+		setIsWideEnough(mediaQueryList.matches)
+
+		return () => {
+			mediaQueryList.removeEventListener('change', handleResize)
+		}
+	}, [])
+
 	const searchInputPlaceholder = isWideEnough ? 'Type / to search GitHub user...' : 'Search GitHub username...'
 
 	return (
@@ -52,10 +64,10 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 			/>
 			<button
 				className='mr-2 text-sml md:text-sm font-bold px-2 md:px-5 py-3 md:py-4 bg-blue rounded-[10px] text-foreground
-				transition duration-300
-				hover:cursor-pointer
-				hover:bg-lightBlue
-				transform active:scale-95'
+        transition duration-300
+        hover:cursor-pointer
+        hover:bg-lightBlue
+        transform active:scale-95'
 				type='submit'>
 				Search
 			</button>
