@@ -1,5 +1,5 @@
-import Header from './components/Header'
-import SearchUser from './components/SearchUser'
+import Header from './components/Header/Header'
+import SearchUser from './components/SearchUser/SearchUser'
 import { ThemeProvider } from './contexts/ThemeContext'
 
 function App() {

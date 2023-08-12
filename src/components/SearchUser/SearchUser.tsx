@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import SearchForm from './SearchForm'
-import UserDetails from './UserDetails'
-import UserLoading from './UserLoading'
+import SearchForm from '../SearchForm/SearchForm'
+import UserDetails from '../UserDetails/UserDetails'
+import UserLoading from '../UserLoading/UserLoading'
 
 interface User {
 	avatar_url: string

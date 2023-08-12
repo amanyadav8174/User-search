@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import search from '../assets/icon-search.svg'
+import search from '../../assets/icon-search.svg'
 
 interface SearchFormProps {
 	onSearch: (userName: string) => void
@@ -49,6 +49,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 
 	return (
 		<form
+			aria-label='Search form'
 			className='flex items-center gap-2 w-full mb-4 md:mb-6 h-15 rounded-[15px] bg-foreground shadow-custom dark:shadow-none dark:bg-dark-foreground'
 			onSubmit={handleSubmit}>
 			<img className='block w-5 h-5 ml-2 md:w-6 md:h-6 md:ml-8 md:mr-2' src={search} alt='icon-search' />

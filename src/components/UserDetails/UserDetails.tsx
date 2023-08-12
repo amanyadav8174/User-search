@@ -1,8 +1,8 @@
 import React from 'react'
-import { ReactComponent as Location } from '../assets/icon-location.svg'
-import { ReactComponent as Website } from '../assets/icon-website.svg'
-import { ReactComponent as TwitterIcon } from '../assets/icon-twitter.svg'
-import { ReactComponent as Company } from '../assets/icon-company.svg'
+import { ReactComponent as Location } from '../../assets/icon-location.svg'
+import { ReactComponent as Website } from '../../assets/icon-website.svg'
+import { ReactComponent as TwitterIcon } from '../../assets/icon-twitter.svg'
+import { ReactComponent as Company } from '../../assets/icon-company.svg'
 
 interface UserDetailsProps {
 	userData: any

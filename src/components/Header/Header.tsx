@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
-import Sun from '../assets/icon-sun.svg'
-import Moon from '../assets/icon-moon.svg'
-import { ThemeContext } from '../contexts/ThemeContext'
+import Sun from '../../assets/icon-sun.svg'
+import Moon from '../../assets/icon-moon.svg'
+import { ThemeContext } from '../../contexts/ThemeContext'
 
 const Header = () => {
 	const themeContext = useContext(ThemeContext)
