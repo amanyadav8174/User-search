@@ -21,9 +21,9 @@ const UserDetails: React.FC<UserDetailsProps> = ({ userData, error }) => {
 					/>
 					<div className='md:min-w-[330px] lg:min-w-0 lg:grid lg:grid-cols-2 col-start-2 col-end-4 sm:min-w-[150px]'>
 						<div className='sm:pb-1'>
-							<h2 className='lg:min-w-[250px] text-base md:text-2xl text-secondary font-bold dark:text-dark-primary'>
+							<p className='lg:min-w-[250px] text-base md:text-2xl text-secondary font-bold dark:text-dark-primary'>
 								{userData.name}
-							</h2>
+							</p>
 							<p className='text-xs md:text-base text-blue md:pt-1'>
 								<a
 									href={`https://github.com/${userData.login}`}

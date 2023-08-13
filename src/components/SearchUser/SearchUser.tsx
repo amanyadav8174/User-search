@@ -42,7 +42,7 @@ const SearchUser: React.FC = () => {
 		} finally {
 			setTimeout(() => {
 				setLoading(false)
-			}, 1500)
+			}, 1000)
 		}
 	}
 
