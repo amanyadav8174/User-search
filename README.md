@@ -5,7 +5,7 @@
       Live
     </a>
     | 
-    <a href="">
+    <a href="https://www.frontendmentor.io/solutions/github-user-search-react-typescript-tailwind-css-unit-tests-L2EYv1b15e">
       Solution
     </a>
     | 
