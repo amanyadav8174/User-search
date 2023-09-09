@@ -55,6 +55,7 @@ const SearchForm: React.FC<SearchFormProps> = ({ onSearch }) => {
 			<img className='block w-5 h-5 ml-2 md:w-6 md:h-6 md:ml-8 md:mr-2' src={search} alt='icon-search' />
 			<input
 				ref={inputRef}
+				name='search-user'
 				className='w-full pt-5 md:pt-6 pb-4 md:pb-6 pl-1 text-xs md:text-base text-primary leading-25 border-0 outline-none  placeholder-primary dark:bg-dark-foreground dark:text-dark-primary dark:placeholder-dark-primary hover:cursor-pointer'
 				type='text'
 				placeholder={searchInputPlaceholder}
