@@ -26,7 +26,7 @@ const Header = () => {
 		<header className='flex flex-wrap justify-between pt-8 pb-9'>
 			<h1>
 				<a href='/' className='text-2xl font-bold text-tertiary dark:text-dark-primary'>
-					devfinder
+					Userfinder
 				</a>
 			</h1>
 			<div className='flex items-center justify-center gap-4 hover:cursor-pointer' onClick={handleThemeToggle}>

@@ -19,9 +19,9 @@ describe('Header Component', () => {
 		jest.clearAllMocks()
 	})
 
-	it('renders the devfinder title', () => {
+	it('renders the userfinder title', () => {
 		renderHeaderInContext()
-		expect(screen.getByText('devfinder')).toBeInTheDocument()
+		expect(screen.getByText('useerfinder')).toBeInTheDocument()
 	})
 
 	it('displays the DARK theme text and dark icon when dark mode is off', () => {

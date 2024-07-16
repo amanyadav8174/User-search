@@ -39,7 +39,7 @@ const SearchUser: React.FC = () => {
 	}
 
 	useEffect(() => {
-		const defaultUsername = 'octocat'
+		const defaultUsername = 'amanyadav8174'
 		handleSearch(defaultUsername)
 	}, [])
 
