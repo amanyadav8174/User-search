@@ -1,7 +1,7 @@
 {
-	"name": "github-user-search",
+	"name": "user-search",
 	"version": "0.1.0",
-	"homepage": "https://maciejnarejko.github.io/github-user-search",
+	"homepage": "https://github.com/amanyadav8174",
 	"private": true,
 	"dependencies": {
 		"@babel/plugin-proposal-private-property-in-object": "^7.21.11",
